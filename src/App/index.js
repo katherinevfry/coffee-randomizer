@@ -1,38 +1,18 @@
 import React, { useState } from 'react';
-import './App.scss';
+import coffeePlaces from '../helpers/data/CoffeeData';
 
-function App() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+export default function App() {
+  const [coffeeHouse, setCoffeeHouse] = useState();
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
+  const getCoffee = () => {
+    const randomCoffee = coffeePlaces[Math.floor(Math.random() * coffeePlaces.length)];
+    setCoffeeHouse(randomCoffee.name);
   };
 
   return (
-    <div className='App'>
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          id='this-button'
-          className='btn btn-info'
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
-      </div>
-      <div>
-        <button
-          id='that-button'
-          className='btn btn-primary mt-3'
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
+    <div className="coffeeSpot">
+      {coffeeHouse ? <h1>{coffeeHouse}</h1> : <h1>Lets Get Coffee</h1>}
+      <button onClick={getCoffee}>Get Coffee</button>
     </div>
   );
 }
-
-export default App;
