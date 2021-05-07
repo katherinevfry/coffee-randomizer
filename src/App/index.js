@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'reactstrap';
 import coffeePlaces from '../helpers/data/CoffeeData';
 
 export default function App() {
@@ -6,13 +7,22 @@ export default function App() {
 
   const getCoffee = () => {
     const randomCoffee = coffeePlaces[Math.floor(Math.random() * coffeePlaces.length)];
-    setCoffeeHouse(randomCoffee.name);
+    setCoffeeHouse(randomCoffee);
   };
 
   return (
     <div className="coffeeSpot">
-      {coffeeHouse ? <h1>{coffeeHouse}</h1> : <h1>Lets Get Coffee</h1>}
-      <button onClick={getCoffee}>Get Coffee</button>
+      <h1>i want coffee at...</h1>
+      <div id="info">
+        {
+        coffeeHouse
+        && <>
+        <h2>{coffeeHouse.name.toUpperCase()}.</h2>
+        <a href={coffeeHouse.url} className="nav-link">Learn More</a>
+        </>
+        }
+      </div>
+      <Button id="button" onClick={getCoffee}>GET COFFEE</Button>
     </div>
   );
 }
