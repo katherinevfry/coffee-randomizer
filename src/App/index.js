@@ -1,38 +1,28 @@
 import React, { useState } from 'react';
-import './App.scss';
+import { Button } from 'reactstrap';
+import coffeePlaces from '../helpers/data/CoffeeData';
 
-function App() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+export default function App() {
+  const [coffeeHouse, setCoffeeHouse] = useState();
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
+  const getCoffee = () => {
+    const randomCoffee = coffeePlaces[Math.floor(Math.random() * coffeePlaces.length)];
+    setCoffeeHouse(randomCoffee);
   };
 
   return (
-    <div className='App'>
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          id='this-button'
-          className='btn btn-info'
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
+    <div className="coffeeSpot">
+      <h1>i want coffee at...</h1>
+      <div id="info">
+        {
+        coffeeHouse
+        && <>
+        <h2>{coffeeHouse.name.toUpperCase()}.</h2>
+        <a href={coffeeHouse.url} className="nav-link">Learn More</a>
+        </>
+        }
       </div>
-      <div>
-        <button
-          id='that-button'
-          className='btn btn-primary mt-3'
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
+      <Button id="button" onClick={getCoffee}>GET COFFEE</Button>
     </div>
   );
 }
-
-export default App;

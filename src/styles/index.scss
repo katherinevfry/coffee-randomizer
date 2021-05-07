@@ -1,6 +1,49 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
+@import url("https://use.typekit.net/lxz5etz.css");
 
 body {
-  background-color: $favColor;
+  background-color: #16302B !important;
+}
+
+.coffeeSpot {
+  margin: auto;
+  margin-top: 30px;
+  text-align: center;
+  color: #94C9A9;
+  // background-color: #242424;
+  // width: 100vw;
+  // height: 100vh;
+}
+
+h1, h2 {
+  font-family: swear-display-cilati, sans-serif;
+}
+
+a {
+  color: #D5573B;
+}
+
+a:link {
+  color: #94C9A9;
+}
+
+a:visited {
+  color: #94C9A9;
+}
+
+a:focus {
+  color: #D5573B;
+}
+
+a:hover {
+  color: #94C9A9 !important;
+}
+
+a:active {
+  color: #94C9A9;
+}
+
+#button {
+  background-color: #D5573B;
 }
